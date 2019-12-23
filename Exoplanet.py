@@ -3,6 +3,11 @@ from bs4 import BeautifulSoup
 import requests as req
 
 def pars(name):
+    
+    """
+    name - name of exoplanet. Example: tres-3_b
+    
+    """
 
     resp = req.get("http://exoplanet.eu/catalog/" + name + "/")
  
@@ -11,6 +16,13 @@ def pars(name):
     return soup
 
 def per(soup):
+    
+    """
+    soup - file creating after parsing calalog page
+    
+    period - orbital period of exoplanet
+    
+    """
 
     period = soup.find(id="planet_period_0").text
 
@@ -19,6 +31,11 @@ def per(soup):
     return period
 
 def ltr(soup):
+    
+    """
+    last_transit - julian date of the last observed transit mentined in catalog
+    
+    """
 
     last_transit = soup.find(id="planet_tzero_tr_0").text
 
@@ -28,6 +45,15 @@ def ltr(soup):
 
 
 def Transit(period, last_transit, first_date, end_date): 
+    
+    """ 
+    first_date and end_date - julian dates of days when observations start and finished
+    
+    n0 and n1 - number of planet rotations between last transit in catalog and dates jf start and finish of observations
+    
+    transit_date - array with jullian dates of all transits in chosen time
+    
+    """
     
     n0 = int((first_date - last_transit)//period)
 
