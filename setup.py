@@ -5,6 +5,6 @@ setup(
     name='Exoplanet',
     version='1.0',
     test_suite='Test',
-    packages=find_packages(),
+    py_modules = ["Exoplanet"],
     long_description=open(join(dirname(__file__), 'README.txt')).read(),
 )
