@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import requests as req
 
 def pars(name):
+
     resp = req.get("http://exoplanet.eu/catalog/" + name + "/")
  
     soup = BeautifulSoup(resp.text, 'lxml')
@@ -10,6 +11,7 @@ def pars(name):
     return soup
 
 def per(soup):
+
     period = soup.find(id="planet_period_0").text
 
     period = float(period.split(" ")[0])
@@ -17,6 +19,7 @@ def per(soup):
     return period
 
 def ltr(soup):
+
     last_transit = soup.find(id="planet_tzero_tr_0").text
 
     last_transit = float(last_transit.split(" ")[0])
