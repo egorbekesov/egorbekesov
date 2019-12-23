@@ -16,15 +16,10 @@ class TransitTestCase(TestCase):
             </body>
             </html>
             """
-            with open("Pars.html",'w',encoding = 'utf-8') as f:
-                   f.write(html_str)
-                   f.close()
-
-            with open("Pars.html", "r") as f:
+            
     
-                   contents = f.read()
  
-                   soup = BeautifulSoup(contents, 'lxml')
+            soup = BeautifulSoup(html_str, 'lxml')
             
             self.assertEqual(Exoplanet.per(soup), 1.5)            
 		
